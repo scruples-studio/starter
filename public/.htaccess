@@ -20,7 +20,7 @@
     RewriteRule ^ index.php [L]
 </IfModule>
 
-Expires headers
+# Expires headers
 <IfModule mod_expires.c>
 ExpiresActive on
 ExpiresByType application/pdf "access plus 1 month"
