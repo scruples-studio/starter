@@ -1,9 +1,5 @@
 /* humans.txt */
 
-Hello! This site was designed and built by Dave Smyth.
+This site was designed and built with Scruples.
 
-On the web:
-- davesmyth.com
-- websmyth.co
-
-Twitter: @websmyth
+Visit us at https://scruples.studio
