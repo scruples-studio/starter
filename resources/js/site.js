@@ -1,8 +1,6 @@
-/* Responsive nav
-   ------------------------------ */
-// @codekit-prepend quiet "vendor/responsive-nav.js"
-// @codekit-append quiet "modules/responsive-nav-init.js
-
+// Responsive nav
+// @codekit-append quiet "vendor/responsive-nav.js"
+// @codekit-append quiet "init.js";
 
 /* Optional modules - uncomment to activate
    ------------------------------ */

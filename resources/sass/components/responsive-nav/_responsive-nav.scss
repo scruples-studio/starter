@@ -1,0 +1,589 @@
+/* -------------------------------------------------------------
+   Variables for responsive nav component
+   ------------------------------------------------------------- */
+
+// The breakpoint – collapse the nav at this width
+$responsive-nav-breakpoint: 50em;
+
+// Logo anchor and SVG dimensions
+$logo-height: 3em;
+$logo-width: 3em;
+$logo-svg-width: 3em;
+
+// Menu toggle button
+$toggle-color: black;
+$toggle-bg-color: transparent;
+$webkit-tap-highlight-color: black;
+$toggle-event-color: black;
+$toggle-event-bg-color: transparent;
+
+// Large screen links
+$large-screen-link-height: 3rem;
+$large-screen-link-line-height: 2.5;
+$large-screen-level-1-link-color: black;
+$large-screen-level-1-link-bg-color: transparent;
+
+// Small screen link dimensions
+$small-screen-link-height: 3rem;
+$small-screen-link-line-height: 3rem;
+$small-screen-link-padding: 1rem;
+$small-screen-level-1-link-color: white;
+$small-screen-level-1-link-bg-color: black;
+
+// Submenu toggle button
+$submenu-toggle-size: 2rem;
+$submenu-toggle-color: white;
+$submenu-toggle-bg-color: transparent;
+$submenu-toggle-event-color: white;
+$submenu-toggle-event-bg-color: transparent;
+
+/* -------------------------------------------------------------
+   Responsive nav styles
+   ------------------------------------------------------------- */
+
+// Primary nav
+[role="navigation"] {
+    max-width: var(--max-width);
+    margin: var(--space-xs) auto 2em auto;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap; // Use wrap-reverse to place links above header
+    justify-content: flex-start; // Right-align large screen menu: space-between;
+
+    @media screen and (max-width: $responsive-nav-breakpoint) {
+        justify-content: space-between; // Right-align nav toggle button
+    }
+
+    // Logo anchor
+    .logo {
+        height: $logo-height;
+        width: $logo-width;
+        display: block;
+        margin-right: 1rem; // Spacing between logo and left-aligned large screen nav
+
+        // Logo SVG
+        .logoSvg {
+            width: $logo-svg-width;
+        }
+    }
+
+    // Toggle button
+    .nav-toggle {
+        -webkit-tap-highlight-color: $webkit-tap-highlight-color;
+        -webkit-touch-callout: none;
+        user-select: none;
+        border: none;
+        color: $toggle-color;
+        background-color: $toggle-bg-color;
+        text-decoration: none;
+        position: relative;
+        padding: 0;
+
+        @include on-event {
+            color: $toggle-event-color;
+            background-color: $toggle-event-bg-color;
+        }
+
+        // Toggle button icon
+        svg {
+            width: 1.75em;
+            margin-left: 0.5em;
+        }
+    }
+
+    // Menu list wrapper div
+    .nav-wrapper,
+    .nav-wrapper * {
+        box-sizing: border-box;
+    }
+
+    .nav-wrapper,
+    .nav-wrapper ul,
+    .nav-wrapper li {
+        width: auto;
+
+        // Small screens
+        @media screen and (max-width: $responsive-nav-breakpoint) {
+            width: 100%;
+        }
+    }
+
+    .nav-wrapper {
+        user-select: none;
+
+        &.opened {
+            max-height: 9999px;
+        }
+
+        // Main ul
+        .nav {
+            list-style-type: none;
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            margin-top: 1em; // change to margin-bottom if using nav { flex-wrap: wrap-reverse; } to place links above header
+
+            // Main ul, small screens
+            @media screen and (max-width: $responsive-nav-breakpoint) {
+                flex-direction: column;
+            }
+
+            li {
+                width: 100%;
+                display: block;
+
+                // Submenu
+                ul {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    list-style-type: none;
+                }
+
+                a {
+                    text-decoration: none;
+                    font-size: var(--font-size);
+                    text-decoration: none;
+                    width: 100%;
+                    text-align: center;
+
+                    // Small screens
+                    @media screen and (max-width: $responsive-nav-breakpoint) {
+                        text-align: left;
+                        display: block;
+                        height: $small-screen-link-height;
+                        line-height: $small-screen-link-line-height;
+                        padding-left: $small-screen-link-padding;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* Large screen/min-width styles 
+   ---------------------------------------- */
+@media only screen and (min-width: $responsive-nav-breakpoint) {
+    // Primary nav
+    [role="navigation"] {
+        align-items: center;
+
+        // Nav toggle
+        .nav-toggle {
+            display: none;
+        }
+
+        // Menu wrapper
+        .nav-wrapper {
+            position: relative;
+
+            // Menu list
+            .nav {
+                margin-top: unset;
+                align-items: center;
+
+                a {
+                    font-size: var(--font-size-xs);
+                }
+
+                > li + li {
+                    // Add optional spacing here when links have background-color
+                    // margin-left: var(--space-3xl);
+                }
+
+                li {
+                    width: auto;
+                    display: flex;
+                    flex: 0 0 content;
+
+                    // Optional button style for last-child link
+                    &:last-child a {
+                        // background-color: var(--color-text);
+                        // color: var(--color-white);
+                        // padding: var(--space-xs) var(--space);
+                        // border-radius: var(--border-radius-s);
+                        // border: var(--color-text) dashed var(--border-thickness);
+                        // &:hover,
+                        // :active {
+                        //   background: var(--color-bg-dark);
+                        // }
+                        // &:hover,
+                        // :focus,
+                        // :active {
+                        //   color: var(--color-text);
+                        // }
+                    }
+                }
+            }
+        }
+    }
+
+    .nav-wrapper .dropdown {
+        position: relative;
+
+        li {
+            width: 100%;
+        }
+
+        ul a {
+            text-align: center; // Align the submenu links
+            border: 0;
+        }
+    }
+
+    .nav-wrapper {
+        li {
+            border: 0;
+            display: inline-block;
+            height: $large-screen-link-height;
+            line-height: $large-screen-link-line-height;
+            position: relative;
+
+            a {
+                display: inline-block;
+                padding: 0 1.5rem; // TEMP
+            }
+        }
+
+        ul ul {
+            margin: 0;
+            position: absolute;
+            top: 0;
+            left: -999em;
+            z-index: 99999;
+            text-align: center;
+
+            a {
+                padding: 1rem 0.75rem; //TEMP
+                white-space: normal;
+                min-width: 12rem; //TEMP
+            }
+        }
+
+        // Option – align last level 1 list item to right header margin
+        .nav li:last-of-type a {
+            //   padding-right: 0;
+        }
+
+        ul ul ul {
+            left: -999em;
+            top: 0;
+        }
+
+        li li {
+            border: 0;
+            display: block;
+            height: auto;
+            line-height: 1.0909090909;
+        }
+    }
+
+    // Dropdown layout
+    .nav-wrapper ul li:hover > ul,
+    .nav-wrapper ul li.focus > ul {
+        top: $large-screen-link-height;
+        // align-center with left: 50%; transform: translateX(-50%);
+        left: 0;
+        transform: translateX(0);
+
+        @media screen and (min-width: $responsive-nav-breakpoint) {
+            width: auto;
+        }
+    }
+
+    .nav-wrapper ul ul li:hover > ul,
+    .nav-wrapper ul ul li.focus > ul {
+        top: 0;
+        left: 0;
+        transform: translateX(100%);
+    }
+}
+
+/* .js-enabled styles
+   ---------------------------------------- */
+.js {
+    .nav-wrapper {
+        position: relative;
+        &.closed {
+            max-height: none;
+            margin-bottom: -1em;
+        }
+
+        .nav-wrapper,
+        .nav-wrapper .dropdown ul {
+            max-height: none;
+            overflow: visible;
+        }
+
+        // Dropdown level small screen styles
+        @media screen and (max-width: $responsive-nav-breakpoint) {
+            clip: rect(0 0 0 0);
+            max-height: 0;
+            position: absolute;
+            display: block;
+            overflow: hidden;
+            // zoom: 1;
+            visibility: hidden;
+
+            &.opened {
+                visibility: visible;
+                overflow: visible;
+            }
+
+            li {
+                position: relative;
+            }
+
+            // Let the navigation expand over the calculated max height
+            &.multiple-level-nav {
+                &.opened.dropdown-active {
+                    max-height: 9999px !important;
+                }
+                .sub-menu.toggled {
+                    display: block;
+                    max-height: 9999px;
+                    position: relative;
+                }
+            }
+        }
+    }
+}
+
+/* Dropdown levels
+   ---------------------------------------- */
+.nav-wrapper li.focus > a {
+}
+// The button for expanding submenus
+.dropdown-toggle {
+    display: none;
+}
+
+// Create expandable dropdown submenus
+@media screen and (max-width: $responsive-nav-breakpoint) {
+    .js .nav-wrapper {
+        &.multiple-level-nav .sub-menu {
+            clip: rect(0 0 0 0);
+            max-height: 0;
+            position: absolute;
+            display: none; // Don't focus on sub menu items unless the sub menu is open
+            overflow: hidden;
+            // zoom: 1;
+        }
+
+        // Submenu toggle buttons
+        .dropdown-toggle {
+            display: block;
+            border: none;
+            color: $submenu-toggle-color;
+            background-color: $submenu-toggle-bg-color;
+            content: "";
+            height: $small-screen-link-height;
+            position: absolute;
+            top: 0;
+            right: 0;
+            text-transform: lowercase;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+
+            @include on-event {
+                color: $submenu-toggle-event-color;
+                background-color: $submenu-toggle-event-bg-color;
+            }
+
+            &:after {
+                content: "+";
+                font-size: $submenu-toggle-size;
+                display: block;
+                transform: translateX(46%);
+            }
+
+            &.toggled:after {
+                transform: translateX(46%) rotate(45deg);
+            }
+        }
+    }
+}
+
+/* Dropdown list items
+   ---------------------------------------- */
+
+// Level 1 link, no submenu
+[role="navigation"] {
+    .nav-wrapper {
+        .nav {
+            li {
+                a {
+                    color: black;
+                    background: transparent;
+                    cursor: pointer;
+
+                    @media screen and (max-width: $responsive-nav-breakpoint) {
+                        color: white;
+                        background: black;
+                    }
+                }
+
+                // Level 1 link with submenu
+                &.dropdown {
+                    .has-dropdown {
+                        @media screen and (max-width: $responsive-nav-breakpoint) {
+                            color: white;
+                            background: black;
+
+                            @include on-event {
+                                color: lightblue;
+                                background-color: #252525;
+                            }
+                        }
+                    }
+
+                    // Level 2 link, no submenu
+                    ul {
+                        a {
+                            color: black;
+                            background: #f0f0f0;
+
+                            @include on-event {
+                                color: lightblue;
+                                background-color: #252525;
+                            }
+
+                            @media screen and (max-width: $responsive-nav-breakpoint) {
+                                padding-left: 1.5em;
+                                color: white;
+                                background: black;
+                            }
+                        }
+
+                        // Level 2 link with submenu
+                        &.sub-menu {
+                            .dropdown {
+                                @include on-event {
+                                    .has-dropdown {
+                                        color: lightblue;
+                                        background-color: #252525;
+                                    }
+                                }
+
+                                .has-dropdown {
+                                    color: black;
+                                    background: #f0f0f0;
+
+                                    @media screen and (max-width: $responsive-nav-breakpoint) {
+                                        color: white;
+                                        background: black;
+                                    }
+                                }
+                            }
+                        }
+
+                        // Level 3 link
+                        ul a {
+                            color: black;
+                            background: #ddd;
+
+                            @include on-event {
+                                color: lightblue;
+                                background-color: #252525;
+                            }
+
+                            @media screen and (max-width: $responsive-nav-breakpoint) {
+                                padding-left: 2.5em;
+                                color: white;
+                                background: black;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// On-event states
+[role="navigation"] .nav-wrapper .nav li a:hover {
+    color: lightblue;
+    background-color: #252525;
+
+    @media screen and (max-width: $responsive-nav-breakpoint) {
+        color: lightblue;
+        background-color: #252525;
+    }
+}
+
+[role="navigation"] .nav-wrapper .nav .dropdown:hover {
+    .has-dropdown {
+        color: lightblue;
+        background-color: #252525;
+
+        @media screen and (max-width: $responsive-nav-breakpoint) {
+            color: lightblue;
+            background-color: #252525;
+        }
+    }
+}
+
+// Animate menu opening
+.nav-wrapper.opened,
+.nav-toggle.active #nav-toggle-text {
+    animation-duration: 1200ms;
+    animation-fill-mode: both;
+    animation-name: fadeIn;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+// Menu icon
+
+// variables
+$navIconColor: #000;
+$iconVal1: 4px;
+$iconVal2: 10px;
+$iconVal3: 16px;
+$navLabelWidth: 8em;
+
+.navIcon {
+    position: relative;
+    width: 38px;
+    cursor: pointer;
+}
+
+.navIcon:before,
+.navIcon:after {
+    background-color: $navIconColor;
+    content: "";
+    display: block;
+    height: $iconVal1;
+    transition: all 0.1s;
+    border-radius: $iconVal1;
+}
+.navIcon:before {
+    box-shadow: 0 $iconVal2 0 $navIconColor;
+    margin-bottom: $iconVal3;
+}
+.navIcon.active:before {
+    box-shadow: 0 0 0 $navIconColor;
+    transform: translateY($iconVal2) rotate(45deg);
+}
+.navIcon.active:after {
+    transform: translateY(-$iconVal2) rotate(-45deg);
+}
+
+.navLabel {
+    width: $navLabelWidth;
+    text-align: right;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(-$navLabelWidth, -50%);
+    padding-right: 0.5em;
+}

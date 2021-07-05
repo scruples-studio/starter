@@ -4,7 +4,7 @@
 @import "mixins.scss";
 @import "typography.scss";
 @import "header.scss";
-@import "nav.scss";
+@import "components/responsive-nav/responsive-nav";
 @import "elements.scss";
 @import "layout.scss";
 @import "footer.scss";
@@ -30,10 +30,3 @@
 // @import "components/toggle/toggle";
 
 /* ------------------------------ */
-
-/// Responsive nav
-/// @link https://github.com/unlikelyobjects/responsive-nav
-/// Demo @link https://unlikelyobjects.github.io/responsive-nav/
-// @import "components/responsive-nav/responsive-nav-icons";
-// @import "components/responsive-nav/responsive-nav-variables";
-// @import "components/responsive-nav/responsive-nav-main";
