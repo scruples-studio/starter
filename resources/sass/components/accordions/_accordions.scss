@@ -1,5 +1,15 @@
-/* Accordion container element
-   ------------------------------ */
+/**
+ * Accordion
+ * Accessible accordions & disclosure widgets
+ *
+ * @link https://github.com/scottaohara/a11y_accordions
+ * Demo @link https://codepen.io/colinlewis/pen/PozZpVX/
+ */
+
+/*------------------------------------*\
+  #CONTAINER ELEMENT
+\*------------------------------------*/
+
 .accordion {
     list-style: none;
     margin: 0 auto 6em auto;
@@ -16,9 +26,10 @@
     margin: 0;
 }
 
-/**
- * Add zero-width space. needed to ensure Safari + VO respect list semantics.
- * Set the before content to position absolute to negate any visible space
+/** 
+ * Add zero-width space. needed to ensure Safari
+ * + VO respect list semantics. Set the before content
+ * to position absolute to negate any visible space
  * the before content could add to the document.
  */
 .accordion > li:before {
@@ -26,8 +37,10 @@
     position: absolute;
 }
 
-/* Accordion Heading
-   ------------------------------ */
+/*------------------------------------*\
+  #HEADING
+\*------------------------------------*/
+
 .accordion__heading {
     margin: -1px 0 0 0;
 }

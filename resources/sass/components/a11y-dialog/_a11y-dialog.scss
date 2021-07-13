@@ -1,7 +1,16 @@
-/// A11y Dialog @link https://github.com/KittyGiraudel/a11y-dialog
+/**
+ * A11y Dialog
+ * @link https://github.com/KittyGiraudel/a11y-dialog 
+ * Demo @link https://codepen.io/colinlewis/pen/mdEVyYQ
+ *
+ * - Basic functions
+ * - Appearance
+ * - Animations
+ */
 
-/* Dialog basic functions
-   ------------------------------ */
+/*------------------------------------*\
+  #BASIC FUNCTIONS
+\*------------------------------------*/
 
 [data-a11y-dialog-native] .dialog-overlay {
     display: none;
@@ -15,11 +24,13 @@ dialog[open] {
     display: none;
 }
 
-/* Dialog appearance
-   ------------------------------ */
+/*------------------------------------*\
+  #APPEARANCE
+\*------------------------------------*/
 
-// Prevent background scrolling by adding this class to <body> when the dialog is active
 .static {
+    // Prevent background scrolling by adding this
+    // class to <body> when the dialog is active
     position: static;
     overflow: hidden;
 }
@@ -72,8 +83,10 @@ dialog::backdrop {
 .dialog-button:active {
     // color: tomato;
 }
-/* Dialog animation
-   ------------------------------ */
+
+/*------------------------------------*\
+  #ANIMATION
+\*------------------------------------*/
 
 @keyframes fade-in {
     from {

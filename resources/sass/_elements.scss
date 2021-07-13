@@ -1,11 +1,10 @@
+/**
+ * Elements
+ */
+
 /* Visually hidden */
 .visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(1px, 1px, 1px, 1px);
-    white-space: no-wrap;
+    @include vh;
 }
 /* Skip links */
 /* [href="#content"], */
