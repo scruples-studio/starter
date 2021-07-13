@@ -1,5 +1,5 @@
 // Nav.js
-// @codekit-append quiet "nav.js";
+// @codekit-append quiet "modules/nav.js";
 
 /* Optional modules
    ------------------------------ */
