@@ -1,6 +1,4 @@
-/* Toggle
-   ------------------------------ */
-   
+// Toggle   
 var toggleSnippet = function (elem) {
     elem.classList.toggle('is-visible');
 };

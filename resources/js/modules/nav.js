@@ -1,7 +1,3 @@
-// Add .js class to html tag to confirm JavaScript is enabled
-var html = document.documentElement;
-html.className += " js";
-
 // Add a one second delay to submenu display for mouse users
 const hasSubmenu = document.querySelectorAll(
   "li.mainNav-menuItem--hasSubmenu"
