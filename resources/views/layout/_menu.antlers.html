@@ -39,15 +39,20 @@
             <a class="mainNav-menuItemLink" href="{{ url }}"{{ if is_current }} class="navCurrent"{{ endif }} aria-haspopup="true" aria-expanded="false">{{ title }}</a>
         
             {{ if children }}
-            <li class="mainNav-submenuItem{{ if children }}--hasSubsubmenu{{ endif }}"{{ if is_current }} aria-current="page"{{ endif }}>
-                <a class="mainNav-submenuItemLink" href="{{ url }}" {{ if is_current }} class="navCurrent"{{ endif }} aria-haspopup="true" aria-expanded="false">{{ title }}</a>
+                {{ children }}
+                <li class="mainNav-submenuItem{{ if children }}--hasSubsubmenu{{ endif }}"{{ if is_current }} aria-current="page"{{ endif }}>
+                    <a class="mainNav-submenuItemLink" href="{{ url }}" {{ if is_current }} class="navCurrent"{{ endif }} aria-haspopup="true" aria-expanded="false">{{ title }}</a>
 
-                {{ if children }}
-                <li class="mainNav-subSubmenuItem"{{ if is_current }} aria-current="page"{{ endif }}>
-                    <a class="mainNav-subSubmenuItemLink" href="{{ url }}" {{ if is_current }} class="navCurrent"{{ endif }}>{{ title }}</a>
+                    {{ if children }}
+                        {{ children }}
+                        <li class="mainNav-subSubmenuItem"{{ if is_current }} aria-current="page"{{ endif }}>
+                            <a class="mainNav-subSubmenuItemLink" href="{{ url }}" {{ if is_current }} class="navCurrent"{{ endif }}>{{ title }}</a>
+                        </li>
+                        {{ /children }}
+                    {{ endif }}
+
                 </li>
-                {{ endif }}
-            </li>
+                {{ /children }}
             {{ endif }}
         </li>
 
