@@ -1,8 +1,7 @@
-// Responsive nav
-// @codekit-append quiet "vendor/responsive-nav.js"
-// @codekit-append quiet "init.js";
+// Nav.js
+// @codekit-append quiet "nav.js";
 
-/* Optional modules - uncomment to activate
+/* Optional modules
    ------------------------------ */
 // A11y Dialog
 // //@codekit-prepend quiet "vendor/a11y-dialog.js"

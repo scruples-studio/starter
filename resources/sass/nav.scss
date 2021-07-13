@@ -1,19 +1,390 @@
-/* General menu */
-[role="navigation"] {
-  // flex: 0 0 16rem;
-  // margin-top: var(--space-3xl);
+/** 
+ * NAV
+ *
+ * - Variables & mixins
+ * - Submenu functionality 
+ * - Basic nav styles
+ * - Toggle button
+ * - JavaScript disabled 
+ */
+
+/*------------------------------------*\
+  #VARIABLES & MIXINS
+\*------------------------------------*/
+
+// Responsive breakpoint
+$breakpoint: 40em;
+
+// Logo dimensions
+$logoWidth: 3em;
+$logoHeight: 3em; // also used to set nav height
+
+// Layout
+$itemSpacing: 1em; // level one link padding l & r
+$submenuItemSpacing: 1em; // level two and three link padding l & r
+$itemHeightMobile: auto; // line-height for items when the nav is a column
+$flyoutWidth: 10em; // min-width for submenu flyout
+
+// Colors
+$navBG: #fff;
+$linkColor: #000;
+$submenuLinkColor: #000;
+$subSubmenuLinkColor: #000;
+$submenuBG: #eee;
+$subSubmenuBG: #ddd;
+
+// Toggle button
+$webkit-tap-highlight-color: blue;
+$toggleTextColor: black;
+$toggleBG: white;
+$iconColor: black;
+$iconWidth: 44px;
+$iconHeight: 4px;
+$iconMargin: 5px;
+// Rotation translation: automatically calculated
+// by changing the values for height and margin
+$iconOnEvent: calc(#{$iconHeight} + #{$iconMargin});
+
+@mixin togglePosition {
+    top: 2em;
+    right: 1em;
 }
-[role="navigation"] a {
-  text-decoration: none;
+
+// Mobile nav placement
+@mixin mobileMenuPosition {
+    top: auto;
+    left: auto;
+    position: relative;
+    margin: 1em 0 0 0;
+    width: auto;
+    background-color: #eee;
 }
-.nav {
-  list-style-type: none;
+
+@mixin mobileShowAnimation {
+    transition: opacity $fadeIn ease-in-out;
 }
-@media only screen and (min-width: 40em) {
-  [role="navigation"] a {
-  //  font-size: var(--font-size);
-  }
-  .nav {
-  //  margin-top: var(--space-3xl);
-  }
+
+// Level 1 link hover styles
+@mixin linkHover {
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-thickness: 0.2em;
+    text-underline-offset: 0.35em;
+}
+
+// Current page link styles
+@mixin currentPage {
+    font-weight: bold;
+}
+
+// Visually hidden styles for submenus
+@mixin hide {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+    visibility: hidden;
+    opacity: 0; // For the animated fade-in
+}
+
+@mixin show {
+    clip: auto;
+    clip-path: none;
+    height: auto;
+    overflow: visible;
+    width: auto;
+    visibility: visible;
+    opacity: 1;
+    transition: 0;
+}
+
+// Animation
+$fadeIn: 200ms;
+
+@mixin showAnimation {
+    transition: $fadeIn opacity ease-in-out;
+}
+
+/*------------------------------------*\
+  #SUBMENU FUNCTIONALITY
+\*------------------------------------*/
+
+// To display the entire nav structure in the
+// mobile flyout start with the following and
+// edit the rest of the section accordingly.
+
+// .main-nav > ul li ul {
+//   @include show;
+//   @include showAnimation;
+//   top: $logoHeight;
+//   left: 0;
+//   width: auto;
+
+//   @media screen and (max-width: $breakpoint) {
+//     position: relative;
+//     top: auto;
+//    left: auto;
+//    width: auto;
+// }
+
+.mainNav {
+    > ul li ul {
+        @include hide;
+        @include showAnimation;
+    }
+
+    > ul li:hover ul,
+    > ul li.focus ul {
+        @include show;
+        top: $logoHeight;
+        left: 0;
+        width: auto;
+        @media screen and (max-width: $breakpoint) {
+            position: relative;
+            top: auto;
+            left: auto;
+            width: auto;
+        }
+    }
+
+    > ul li:hover ul li ul,
+    > ul li.focus ul li ul {
+        @include hide;
+        @include showAnimation;
+    }
+
+    > ul li ul li:hover ul,
+    > ul li ul li.focus ul {
+        @include show;
+        top: 0;
+        left: 100%;
+        width: auto;
+
+        @media screen and (max-width: $breakpoint) {
+            position: relative;
+            top: auto;
+            left: auto;
+        }
+    }
+}
+
+/*------------------------------------*\
+  #BASIC NAV STYLES
+\*------------------------------------*/
+
+.mainNav {
+    background: $navBG;
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    // flex: 0 0 16rem;
+    // margin-top: var(--space-3xl);
+
+    @media screen and (max-width: $breakpoint) {
+        position: relative;
+        display: block;
+        //  margin-top: var(--space-3xl);
+    }
+
+    &-logo {
+        width: $logoWidth;
+        height: $logoHeight;
+    }
+
+    &-logoSvg {
+        width: $logoWidth;
+        height: $logoHeight;
+    }
+
+    a {
+        color: $linkColor;
+        text-decoration: none;
+
+        @media only screen and (min-width: $breakpoint) {
+            //  font-size: var(--font-size);
+        }
+    }
+
+    &-menu {
+        position: relative;
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: flex-start;
+
+        @media screen and (max-width: $breakpoint) {
+            @include hide;
+            flex-direction: column;
+
+            &.jsIsActive {
+                @include show;
+                @include mobileMenuPosition;
+                @include mobileShowAnimation;
+            }
+        }
+    }
+
+    &-menuItem {
+        padding: 0 $itemSpacing;
+
+        &:last-of-type {
+            padding-right: 0;
+        }
+
+        &:hover:not([aria-current="page"]) {
+            @include linkHover;
+        }
+
+        &[aria-current="page"] {
+            @include currentPage;
+        }
+
+        &--hasSubmenu {
+            padding: 0 $itemSpacing;
+            position: relative;
+
+            &[aria-current="page"] {
+                @include currentPage;
+            }
+
+            @media screen and (max-width: $breakpoint) {
+                width: calc(100% - 1em);
+            }
+        }
+
+        @media screen and (max-width: $breakpoint) {
+            width: calc(100% - 1em);
+        }
+    }
+
+    &-menuItemLink {
+        height: $logoHeight;
+        line-height: $logoHeight;
+    }
+
+    &_menuItemLink,
+    &-submenuItemLink,
+    &-subSubmenuItemLink {
+        display: block;
+    }
+
+    &-submenu {
+        background: $submenuBG;
+    }
+
+    &-submenuItem {
+        &--hasSubSubmenu {
+            position: relative;
+            display: block;
+        }
+    }
+
+    &-submenuItemLink {
+        padding: $submenuItemSpacing;
+        white-space: nowrap;
+    }
+
+    &-subSubmenu {
+        background: $subSubmenuBG;
+        @media screen and (max-width: $breakpoint) {
+            background: $subSubmenuBG;
+        }
+    }
+
+    &-subSubmenuItem {
+        background: $subSubmenuBG;
+    }
+
+    &-subSubmenuItemLink {
+        padding: $submenuItemSpacing;
+        white-space: nowrap;
+    }
+}
+
+/*------------------------------------*\ 
+  #TOGGLE BUTTON 
+\*------------------------------------*/
+
+.navToggle {
+    -webkit-tap-highlight-color: $webkit-tap-highlight-color;
+    -webkit-touch-callout: none;
+    display: none;
+
+    @media screen and (max-width: $breakpoint) {
+        display: block;
+        user-select: none;
+        border: none;
+        color: $toggleTextColor;
+        background-color: $toggleBG;
+        text-decoration: none;
+        padding: 0;
+        position: absolute;
+        @include togglePosition;
+    }
+
+    &-text {
+        // Toggle button label
+        // Add styles and remove the "hidden" attribute from the nav-toggle__text wrapper in the html
+    }
+
+    &-icon {
+        width: $iconWidth;
+
+        &:after,
+        &:before,
+        div {
+            background-color: $iconColor;
+            border-radius: $iconHeight;
+            content: "";
+            display: block;
+            height: $iconHeight;
+            margin: $iconMargin;
+            transition: all 0.2s ease-in-out;
+        }
+    }
+
+    &.jsIsActive {
+        .navToggle-icon {
+            &:before {
+                transform: translateY($iconOnEvent) rotate(135deg);
+            }
+
+            &:after {
+                transform: translateY(calc(#{$iconOnEvent} * -1))
+                    rotate(-135deg);
+            }
+
+            div {
+                transform: scale(0);
+            }
+        }
+    }
+}
+
+/*------------------------------------*\
+  #JAVASCRIPT DISABLED 
+\*------------------------------------*/
+
+html:not(.js) {
+    .mainNav {
+        &-menu {
+            // Show the mobile nav by default
+            @media screen and (max-width: $breakpoint) {
+                flex-direction: column;
+                @include show;
+                @include mobileMenuPosition;
+                @include mobileShowAnimation;
+            }
+        }
+    }
+    .navToggle {
+        // Remove the toggle button
+        display: none;
+    }
 }
