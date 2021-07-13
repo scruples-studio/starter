@@ -1,3 +1,5 @@
+
+
 <nav class="mainNav" aria-label="Main Navigation">
 
     <!-- Logo -->
@@ -32,42 +34,24 @@
     <ul id="menu" class="mainNav-menu">
     <!-- Main nav -->
         {{ nav:main }}
-            <li>
-                <a href="{{ url }}"{{ if is_current }} class="navCurrent"{{ endif }}>{{ title }}</a>
+   
+        <li class="mainNav-menuItem{{ if children }}--hasSubmenu{{ endif }}"{{ if is_current }} aria-current="page"{{ endif }}>
+            <a class="mainNav-menuItemLink" href="{{ url }}"{{ if is_current }} class="navCurrent"{{ endif }} aria-haspopup="true" aria-expanded="false">{{ title }}</a>
+        
+            {{ if children }}
+            <li class="mainNav-submenuItem{{ if children }}--hasSubsubmenu{{ endif }}"{{ if is_current }} aria-current="page"{{ endif }}>
+                <a class="mainNav-submenuItemLink" href="{{ url }}" {{ if is_current }} class="navCurrent"{{ endif }} aria-haspopup="true" aria-expanded="false">{{ title }}</a>
+
+                {{ if children }}
+                <li class="mainNav-subSubmenuItem"{{ if is_current }} aria-current="page"{{ endif }}>
+                    <a class="mainNav-subSubmenuItemLink" href="{{ url }}" {{ if is_current }} class="navCurrent"{{ endif }}>{{ title }}</a>
+                </li>
+                {{ endif }}
             </li>
+            {{ endif }}
+        </li>
+
         {{ /nav:main }}
     </ul>
+
 </nav>
-
-
-// Classes to add to list items:
-            <li class="mainNav-menuItem" aria-current="page"><a class="mainNav-menuItemLink" href="#">Work</a></li>
-            <li class="mainNav-menuItem--hasSubmenu">
-                <a class="mainNav-menuItemLink" href="https://google.com" aria-haspopup="true" aria-expanded="false">
-                    Submenu
-                </a>
-        
-                <ul class="mainNav-submenu">
-                    <li class="mainNav-submenuItem"><a class="mainNav-submenuItemLink" href="…">Submenu item 1</a></li>
-                    <li class="mainNav-submenuItem--hasSubSubmenu">
-                        <a class="mainNav-submenuItemLink" href="#" aria-haspopup="true" aria-expanded="false">
-                            Sub-submenu link
-                        </a>
-                        <ul class="mainNav-submenu">
-                            <li class="mainNav-subSubmenuItem"><a class="mainNav-subSubmenuItemLink" href="#">Sub-submenu item
-                                    1</a></li>
-                        </ul>
-                    </li>        
-                </ul>
-            </li>
-
-
-
-
-
-
-
-
-
-
-
