@@ -32,11 +32,12 @@
     <ul id="menu" class="mainNav-menu">
         <!-- Main nav -->
         {{ nav include_home="true" }}
-        <li 
-        {{ if depth==1 }}class="mainNav-menuItem{{ if children }}--hasSubmenu{{ endif }}" 
-        {{ elseif depth==2 }}{{ if children }}class="mainNav-submenuItem--hasSubsubmenu{{ else }}mainNav-submenuItem{{ endif }}" 
-        {{ elseif depth==3 }}class="mainNav-subSubmenuItem" 
-        {{ endif }} 
+        <li class="
+        {{ if depth==1 }}mainNav-menuItem{{ if children }}--hasSubmenu{{ endif }}
+        {{ elseif depth==2 }}{{ if children }}mainNav-submenuItem--hasSubsubmenu{{ else }}mainNav-submenuItem{{ endif }}
+        {{ elseif depth==3 }}mainNav-subSubmenuItem
+        {{ endif }}
+        "
         {{ if is_current }} aria-current="page" {{ endif }}>
 
             <a class="
@@ -45,7 +46,8 @@
             {{ elseif depth == 3 }}mainNav-subSubmenuItemLink
             {{ endif }}
             {{ if is_current }} navCurrent {{ endif }} 
-            " href="{{ url }}" {{ if children }} aria-haspopup="true" aria-expanded="false" {{ endif }}>
+            " 
+            href="{{ url }}" {{ if children }} aria-haspopup="true" aria-expanded="false" {{ endif }}>
                 {{ title }}
             </a>
 
