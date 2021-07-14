@@ -33,21 +33,21 @@
         <!-- Main nav -->
         {{ nav include_home="true" }}
         <li class="
-        {{ if depth==1 }}mainNav-menuItem{{ if children }}--hasSubmenu{{ endif }}
-        {{ elseif depth==2 }}{{ if children }}mainNav-submenuItem--hasSubsubmenu{{ else }}mainNav-submenuItem{{ endif }}
-        {{ elseif depth==3 }}mainNav-subSubmenuItem
+        {{ if depth == 1 }}mainNav-menuItem{{ if children }}--hasSubmenu{{ endif }}
+        {{ elseif depth == 2 }}mainNav-submenuItem{{ if children }}--hasSubSubmenu{{ endif }}
+        {{ elseif depth == 3 }}mainNav-subSubmenuItem
         {{ endif }}
         "
         {{ if is_current }} aria-current="page" {{ endif }}>
 
-            <a class="
-            {{ if depth == 1 }}mainNav-menuItemLink
-            {{ elseif depth == 2 }}mainNav-submenuItemLink
-            {{ elseif depth == 3 }}mainNav-subSubmenuItemLink
-            {{ endif }}
-            {{ if is_current }} navCurrent {{ endif }} 
-            " 
-            href="{{ url }}" {{ if children }} aria-haspopup="true" aria-expanded="false" {{ endif }}>
+            <a href="{{ url }}" class="
+                {{ if depth == 1 }}mainNav-menuItemLink
+                {{ elseif depth == 2 }}mainNav-submenuItemLink
+                {{ elseif depth == 3 }}mainNav-subSubmenuItemLink
+                {{ endif }}
+                {{ if is_current }} navCurrent {{ endif }}
+                "
+                {{ if children }} aria-haspopup="true" aria-expanded="false" {{ endif }}>
                 {{ title }}
             </a>
 
