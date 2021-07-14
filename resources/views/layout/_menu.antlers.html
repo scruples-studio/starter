@@ -1,5 +1,3 @@
-
-
 <nav class="mainNav" aria-label="Main Navigation">
 
     <!-- Logo -->
@@ -21,7 +19,7 @@
             </g>
         </svg>
     </a>
-    
+
     <!-- Toggle button -->
     <!-- See https://www.sarasoueidan.com/blog/accessible-icon-buttons for an overview of the various button text solutions -->
     <button id="navToggle" class="navToggle" aria-labelledby="navToggle-label">
@@ -29,34 +27,34 @@
             <div></div>
         </div>
         <span id="navToggle-label" class="navToggle-text" hidden>Menu</span>
-    </button>        
+    </button>
 
     <ul id="menu" class="mainNav-menu">
-    <!-- Main nav -->
-        {{ nav:main }}
-   
-        <li class="mainNav-menuItem{{ if children }}--hasSubmenu{{ endif }}"{{ if is_current }} aria-current="page"{{ endif }}>
-            <a class="mainNav-menuItemLink" href="{{ url }}"{{ if is_current }} class="navCurrent"{{ endif }} aria-haspopup="true" aria-expanded="false">{{ title }}</a>
-        
-            {{ if children }}
-                {{ children }}
-                <li class="mainNav-submenuItem{{ if children }}--hasSubsubmenu{{ endif }}"{{ if is_current }} aria-current="page"{{ endif }}>
-                    <a class="mainNav-submenuItemLink" href="{{ url }}" {{ if is_current }} class="navCurrent"{{ endif }} aria-haspopup="true" aria-expanded="false">{{ title }}</a>
+        <!-- Main nav -->
+        {{ nav include_home="true" }}
+        <li 
+        {{ if depth==1 }}class="mainNav-menuItem{{ if children }}--hasSubmenu{{ endif }}" 
+        {{ elseif depth==2 }}{{ if children }}class="mainNav-submenuItem--hasSubsubmenu{{ else }}mainNav-submenuItem{{ endif }}" 
+        {{ elseif depth==3 }}class="mainNav-subSubmenuItem" 
+        {{ endif }} 
+        {{ if is_current }} aria-current="page" {{ endif }}>
 
-                    {{ if children }}
-                        {{ children }}
-                        <li class="mainNav-subSubmenuItem"{{ if is_current }} aria-current="page"{{ endif }}>
-                            <a class="mainNav-subSubmenuItemLink" href="{{ url }}" {{ if is_current }} class="navCurrent"{{ endif }}>{{ title }}</a>
-                        </li>
-                        {{ /children }}
-                    {{ endif }}
-
-                </li>
-                {{ /children }}
+            <a class="
+            {{ if depth == 1 }}mainNav-menuItemLink
+            {{ elseif depth == 2 }}mainNav-submenuItemLink
+            {{ elseif depth == 3 }}mainNav-subSubmenuItemLink
             {{ endif }}
+            {{ if is_current }} navCurrent {{ endif }} 
+            " href="{{ url }}" {{ if children }} aria-haspopup="true" aria-expanded="false" {{ endif }}>
+                {{ title }}
+            </a>
+
+            {{ if children }}
+            <ul class="mainNav-submenu">
+                {{ *recursive children* }}
+            </ul>
+            {{ /if }}
         </li>
-
-        {{ /nav:main }}
+        {{ /nav }}
     </ul>
-
 </nav>
