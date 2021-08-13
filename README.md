@@ -12,3 +12,4 @@ It contains the following defaults:
 * `system.php` &rarr; `send_powered_by_header` = `false`
 * `Pro` enabled
 * `.htaccess` expires headers + GZIP
+* `Aardvark SEO`
