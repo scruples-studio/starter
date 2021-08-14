@@ -1,6 +1,3 @@
-// Test if JavaScript is enabled
-// @codekit-prepend quiet "modules/js-test.js";
-
 // Nav.js
 // @codekit-append quiet "modules/nav.js";
 
