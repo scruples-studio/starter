@@ -12,6 +12,10 @@ body {
     margin-right: auto;
     margin-left: auto;
 }
+.fullWidth {
+    margin-left: calc(50% - 50vw);
+    width: 100vw;
+}
 .flow > * + * {
     margin-top: var(--space);
 }
