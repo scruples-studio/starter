@@ -35,7 +35,7 @@ function radioButtonGroup( buttonGroup ) {
     if ( !matchesSelector( event.target, '.filterButton' ) ) {
       return;
     }
-    buttonGroup.querySelector('.is-checked').classList.remove('activeFilter');
+    buttonGroup.querySelector('.activeFilter').classList.remove('activeFilter');
     event.target.classList.add('activeFilter');
   });
 }
