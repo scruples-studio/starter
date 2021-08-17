@@ -16,3 +16,6 @@
 // //@codekit-append quiet "vendor/dropcap.min.js"
 // //@codekit-append quiet "modules/dropcap-script.js"
 
+// Isotope
+// //@codekit-append quiet "vendor/isotope.pkgd.min.js"
+// //@codekit-append quiet "modules/isotope-init.js"
