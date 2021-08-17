@@ -11,3 +11,8 @@
 
 // Toggle
 // //@codekit-append quiet "modules/toggle.js"
+
+// Dropcap
+// //@codekit-append quiet "vendor/dropcap.min.js"
+// //@codekit-append quiet "modules/dropcap-script.js"
+
