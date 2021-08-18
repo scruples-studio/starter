@@ -2,6 +2,9 @@
  * Isotope init
  */
 
+// See the Shop template on Nick Parker for an example of implementing the filter button group, etc.
+// @link https://github.com/scruples-studio/nickparker/blob/master/resources/views/shop.antlers.html
+
 // Isotope container
 var elem = document.querySelector('.productList');
 var iso = new Isotope( elem, {
