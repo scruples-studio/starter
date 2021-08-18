@@ -63,10 +63,12 @@ input[type="submit"],
 }
 .fieldLabel {
     display: block;
+    line-height: var(--line-height-s);
 }
 .fieldHint {
     margin-top: var(--space-3xs);
     display: block;
+    line-height: var(--line-height-s);
 }
 .fieldContainer input,
 .fieldContainer textarea {
