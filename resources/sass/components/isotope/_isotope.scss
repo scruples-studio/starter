@@ -2,5 +2,14 @@
  * Isotope
  */
 
+// Hide the filter button group if no JS
+.no-js {
+    .filterButtonGroup {
+        display: none;
+    }
+}
+
 .activeFilter {
+    background-color: transparent;
+    color: var(--color-text);
 }
