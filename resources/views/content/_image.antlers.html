@@ -1,0 +1,6 @@
+<figure class="image">
+    <img src="{{ image }}" alt="{{ image_alt ensure_right="." }}" loading="lazy" />
+    {{ if image_caption }}
+        <figcaption>{{ image_caption }}</figcaption>
+    {{ endif }}
+</figure>

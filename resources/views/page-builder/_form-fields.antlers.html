@@ -1,0 +1,18 @@
+<div class="formFields-container">
+    {{ fields }}
+        <div class="fieldContainer{{ width == '50' ?= ' fieldHalf' }}">
+            <div class="field">
+                <label for="{{ handle }}">
+                    <span class="fieldLabel">{{ display }}</span>
+                    {{ if validate | contains:required && type !== "checkboxes" }}<span class="fieldHint">Required</span>{{ endif }}
+                </label>
+            </div>
+            
+            {{ if error }}
+                <p class="errors">{{ error }}</p>
+            {{ endif }}
+
+            {{ field }}
+        </div>
+    {{ /fields }}
+</div>

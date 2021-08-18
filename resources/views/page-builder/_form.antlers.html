@@ -1,0 +1,30 @@
+<section class="formWrapper">
+    <div class="formWrapper-content">
+        {{ if form_heading || form_description }}
+            <header class="formHeading">
+                {{ form_heading | wrap:h2 }}
+                {{ form_description }}
+            </header>
+        {{ endif }}
+
+        {{ form:create in="{ form:handle }"
+            id="form-{form:handle}"
+            class="formContainer"
+        }}
+            <div class="formFields">
+                {{# Honeypot spam protection. #}}
+                <div class="screenreaderText">
+                    <label for="{{ honeypot }}">{{ form_honeypot }}</label>
+                    <input id="{{ honeypot }}" type="text" name="{{ honeypot }}" tabindex="-1" autocomplete="off" />
+                </div>
+
+                {{# Render default-styled fields in a separate partial so it's easy to make different form styles, for example: {{ if form:handle == 'another_form'. }} #}}
+                {{ partial:page-builder/form-fields }}
+            </div>
+            <div class="submitContainer">
+                <button type="submit">{{ submit_button_text ?? submit_button_text ?? "Submit" }}</button>
+            </div>
+        {{ /form:create }}
+
+    </div>
+</section>

@@ -1,0 +1,68 @@
+title: Form
+fields:
+  -
+    handle: form
+    field:
+      max_items: 1
+      type: form
+      listable: hidden
+      instructions: 'Which form should be displayed.'
+      display: Form
+      validate:
+        - required
+  -
+    handle: submit_button_text
+    field:
+      input_type: text
+      antlers: false
+      display: 'Submit Button'
+      type: text
+      icon: text
+      instructions: 'Defaults to `Submit`'
+      listable: hidden
+  -
+    handle: add_heading_or_description
+    field:
+      default: false
+      display: 'Add Heading and/or Description?'
+      type: toggle
+      icon: toggle
+      listable: hidden
+  -
+    handle: form_heading
+    field:
+      input_type: text
+      antlers: false
+      display: Heading
+      type: text
+      icon: text
+      listable: hidden
+      instructions: '`Optional.`'
+      if:
+        add_heading_or_description: 'equals true'
+  -
+    handle: form_description
+    field:
+      always_show_set_button: false
+      buttons:
+        - bold
+        - italic
+        - removeformat
+        - anchor
+      save_html: false
+      toolbar_mode: fixed
+      link_noopener: false
+      link_noreferrer: false
+      target_blank: false
+      reading_time: false
+      fullscreen: true
+      allow_source: true
+      enable_input_rules: true
+      enable_paste_rules: true
+      display: Description
+      type: bard
+      icon: bard
+      listable: hidden
+      instructions: '`Optional.`'
+      if:
+        add_heading_or_description: 'equals true'
