@@ -1,9 +1,39 @@
 /**
- * Dropcap
+ * Drop-cap
  */
 
+// dropcap.js styles
 #dropcap {
-    initial-letter: 2;
+    // initial-letter: 3;
     font-weight: bold;
     margin-right: 0.25rem;
+}
+
+// Pure CSS drop-cap; fallback for Safari
+.fallbackDropcap::first-letter {
+    float: left;
+    padding: 0;
+    font-weight: bold;
+    margin-right: 0.25rem;
+    font-variant-caps: normal;
+    line-height: 0;
+    margin-top: 0;
+}
+
+// Two row height values
+.fallbackDropcapTwoRows::first-letter {
+    height: 2.8rem;
+    // drop from 4.395 to 3.5rem @ 2560-375px
+    font-size: clamp(3.5rem, 3.3464rem + 0.6554vw, 4.395rem);
+    // drop from 1.95 to 1.75rem @ 2560-375px
+    transform: translateY(clamp(1.75rem, 1.7157rem + 0.1465vw, 1.95rem));
+}
+
+// Three row height values
+.fallbackDropcapThreeRows::first-letter {
+    height: 5rem;
+    // drop from 7.4 to 6rem @ 2560-375px
+    font-size: clamp(6rem, 5.7597rem + 1.0252vw, 7.4rem);
+    // drop from 3 to 2.5rem @ 2560-375px
+    transform: translateY(clamp(2.5rem, 2.4142rem + 0.3661vw, 3rem));
 }
