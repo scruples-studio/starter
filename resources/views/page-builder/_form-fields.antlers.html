@@ -1,6 +1,6 @@
 <div class="formFields-container">
     {{ fields }}
-        <div class="fieldContainer{{ width == '50' ?= ' fieldHalf' }}">
+        <div class="fieldContainer {{ type }}Field{{ width == '50' ?= ' fieldHalf' }}">
             <div class="field">
                 <label for="{{ handle }}">
                     <span class="fieldLabel">{{ display }}</span>
