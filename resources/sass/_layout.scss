@@ -2,9 +2,13 @@
  * Layout
  */
 
+html,
 body {
     // background: var(--color-bg-light);
     overflow-x: hidden;
+}
+body {
+    // background: var(--color-bg-light);
 }
 /* Utilities */
 .wrapper {
