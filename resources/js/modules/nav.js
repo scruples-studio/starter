@@ -23,6 +23,7 @@ var submenuItems = document.querySelectorAll(
 );
 Array.prototype.forEach.call(submenuItems, function (el) {
   el.querySelector("a").addEventListener("click", function (event) {
+    // To make the parent link clickable, change "click" to "focus"
     if (this.parentNode.className == "mainNav-menuItem--hasSubmenu") {
       this.parentNode.className = "mainNav-menuItem--hasSubmenu open";
       this.setAttribute("aria-expanded", "true");
