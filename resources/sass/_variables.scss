@@ -17,6 +17,10 @@
     // --border-thickness: 0.05rem;
     // --border-thickness-button: 0.1rem;
     // --transition: all ease-in-out 0.3s;
+
+    // --margin: 1.5rem;
+    // --margin-neg: -1.5rem;
+    // --margin-double: 3rem;
     /* Modular scale: https://www.modularscale.com/?18&px&1.2 */
     // --font-size-8xl: calc(5.8rem + 0.2vw); /* 93px */
     // --font-size-7xl: calc(4.83rem + 0.2vw); /* 77px */
@@ -47,6 +51,18 @@
     --space-2xs: 0.3em;
     --space-3xs: 0.2em;
     --space-4xs: 0.1em;
+    // --r-space-6xl: 7rem;
+    // --r-space-5xl: 5rem;
+    // --r-space-4xl: 3rem;
+    // --r-space-3xl: 2rem;
+    // --r-space-2xl: 1.5rem;
+    // --r-space-xl: 1.25rem;
+    // --r-space-l: 1.125rem;
+    // --r-space: 1rem;
+    // --r-space-s: 0.7rem;
+    // --r-space-xs: 0.6rem;
+    // --r-space-2xs: 0.4rem;
+    // --r-space-3xs: 0.2rem;
     --layout-space-3xl: calc(6rem + 10vw);
     --layout-space-2xl: calc(6rem + 6vw);
     --layout-space-xl: calc(6rem + 4vw);
