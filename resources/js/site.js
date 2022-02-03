@@ -22,3 +22,6 @@
 
 // Cards
 // @  codekit-append quiet "vendor/cards.js"
+
+// Conditionally serve js to page by checking body class
+// if (document.body.classList.contains('Template')) { 

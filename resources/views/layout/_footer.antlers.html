@@ -6,6 +6,13 @@
         {{ code }}
     <!-- End {{ description }} -->
 {{ /scripts:footer_scripts }}
+{{# Add sanitized template path as class to body #}}
+<script>
+    var className = '{{ template }}';
+    className = className.replace('/', '-');
+    var body = document.body;
+    body.classList.add(className);
+</script>
 <script src="/js/site.js"></script>
 {{ if app:env == "prod" }}
     <!-- analytics script -->    
