@@ -3,7 +3,7 @@
  */
 
 /* Visually hidden */
-.visually-hidden {
+.visuallyHidden {
     position: absolute !important;
     height: 1px;
     width: 1px;
@@ -13,13 +13,13 @@
 }
 /* Skip links */
 /* [href="#content"], */
-.skip-link {
+.skipLink {
     position: absolute;
     top: 0;
     right: 100%;
 }
 [href="#content"]:focus,
-.skip-link:focus {
+.skipLink:focus {
     top: 1em;
     left: 1em;
     right: auto;
@@ -32,9 +32,9 @@
     padding: var(--space);
 }
 /* Screen reader text */
-.screen-reader-text,
-.screen-reader-text span,
-.screen-reader-shortcut {
+.stText,
+.stText span,
+.stShortcut {
     position: absolute;
     height: 1px;
     width: 1px;
@@ -43,8 +43,8 @@
     box-sizing: content-box;
     font-family: var(--sans-serif);
 }
-.screen-reader-text:focus,
-.screen-reader-shortcut:focus {
+.stText:focus,
+.stShortcut:focus {
     clip: auto;
     height: auto;
     width: auto;
