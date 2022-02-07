@@ -8,7 +8,11 @@ input {
     -webkit-appearance: none;
     -webkit-border-radius: 0;
 }
-
+// Remove default blue text on iOS
+textarea,
+select {
+    color: var(--color-text);
+}
 ::-webkit-input-placeholder {
     /* Chrome/Opera/Safari */
     color: var(--color-text);
