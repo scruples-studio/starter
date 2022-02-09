@@ -1,4 +1,5 @@
 // Nav.js
+// @codekit-append quiet "vendor/sv-hover-intent.js"
 // @codekit-append quiet "modules/nav.js";
 
 /* Optional modules
