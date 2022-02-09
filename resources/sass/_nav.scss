@@ -137,7 +137,8 @@ $fadeIn: 200ms;
     }
 
     > ul li:hover ul,
-    > ul li.focus ul {
+    > ul li.focus ul,
+    > ul li.mainNav-menuItem--hasSubmenu.open ul {
         @include show;
         top: $logoHeight;
         left: 0;
@@ -260,6 +261,19 @@ $fadeIn: 200ms;
 
         @media screen and (max-width: $breakpoint) {
             width: calc(100% - 1em);
+        }
+    }
+
+    // Hover on submenu link triggers anchor bg colour
+    .mainNav-menuItem--hasSubmenu {
+        @media screen and (min-width: $breakpoint) {
+            @include on-event {
+                .mainNav-menuItemLink {
+                    // background-color: var(--color-primary-light);
+                    // border: var(--border-thickness-button) solid
+                    //     var(--color-primary-light);
+                }
+            }
         }
     }
 
