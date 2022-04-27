@@ -6,12 +6,18 @@
         {{ code }}
     <!-- End {{ description }} -->
 {{ /scripts:footer_scripts }}
-{{# Add sanitized template path as class to body #}}
+{{# Add sanitized template path and page slug as classes to body #}}
 <script>
-    var className = '{{ template }}';
-    className = className.replace('/', '-');
     var body = document.body;
-    body.classList.add(className);
+    var className = '{{ current_template }}';
+    className = className.replace('/', '-');
+    var slug = '{{ slug }}';
+    if (slug) {
+        var pageSlug = ('page-' + slug);
+    } else {
+        var pageSlug = ('no-slug');
+    };
+    body.classList.add(className, pageSlug);    
 </script>
 <script src="/js/site.js"></script>
 {{ if app:env == "prod" }}
