@@ -32,7 +32,7 @@ Array.prototype.forEach.call(submenuItems, function (el) {
       this.parentNode.className = "mainNav-menuItem--hasSubmenu open";
       this.setAttribute("aria-expanded", "true");
     } else {
-      this.parentNode.className = "mainNav-menuItem--hasSubmenu";
+      this.parentNode.className = "mainNav-menuItem--hasSubmenu open";
       this.setAttribute("aria-expanded", "false");
     }
     event.preventDefault();
