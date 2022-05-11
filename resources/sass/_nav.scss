@@ -352,7 +352,7 @@ $fadeIn: 200ms;
 
         &:after,
         &:before,
-        div {
+        span {
             background-color: $iconColor;
             border-radius: $iconHeight;
             content: "";
@@ -374,7 +374,7 @@ $fadeIn: 200ms;
                     rotate(-135deg);
             }
 
-            div {
+            span {
                 transform: scale(0);
             }
         }
