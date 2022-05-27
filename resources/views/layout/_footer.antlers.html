@@ -10,7 +10,8 @@
 <script>
     var body = document.body;
     var className = '{{ current_template }}';
-    className = className.replace('/', '-');
+    body.classList.remove('no-script');
+    className = className.replace(/[/._]/g, '-')
     var slug = '{{ slug }}';
     if (slug) {
         var pageSlug = ('page-' + slug);
